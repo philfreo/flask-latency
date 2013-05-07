@@ -7,14 +7,24 @@ By default it will only ever apply latency if `app.debug` is on, and if you have
 
 ## Installation
 
-In your main application file, install the latency app as follows:
+- In your main application file, install the latency app as follows:
 
 ```python
 from flask.ext.latency import Latency
 Latency(app)
 ```
 
-And add the configuration variables to `app.config`, mentioned below.
+- Add the configuration variables mentioned below to `app.config`.
+
+- Finally, you'll likely want to run a development server that can properly handle multiple HTTP requests in parallel, even while one is sleeping. If you're using Flask's `app.run()` or [Flask-Script](http://flask-script.readthedocs.org/en/latest/)'s `Server` command, be sure to pass `threaded=True` as a kwarg. 
+
+For example, change from:
+
+`app.run()` OR `server = Server(host="0.0.0.0", port=9000)` 
+
+To:
+
+`app.run(threaded=True)` OR `server = Server(host="0.0.0.0", port=9000, threaded=True)`
 
 ## Configuration
 
