@@ -10,7 +10,7 @@ By default it will only ever apply latency if `app.debug` is on, and if you have
 - In your main application file, install the latency app as follows:
 
 ```python
-from flask.ext.latency import Latency
+from flask_latency import Latency
 Latency(app)
 ```
 
